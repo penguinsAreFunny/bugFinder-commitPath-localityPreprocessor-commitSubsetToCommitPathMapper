@@ -45,55 +45,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommitSubsetToCommitPath = void 0;
+exports.CommitPathRecorder = void 0;
 var inversify_1 = require("inversify");
 var TYPES_1 = require("./TYPES");
-var CommitSubsetToCommitPath = /** @class */ (function () {
-    function CommitSubsetToCommitPath() {
-        /**
-         * Number of elements to skip in DB.
-         */
-        this.skip = 0;
+var CommitPathRecorder = /** @class */ (function () {
+    function CommitPathRecorder() {
     }
-    CommitSubsetToCommitPath.prototype.preprocess = function () {
+    CommitPathRecorder.prototype.getLocalities = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var commits, commitPaths;
+            var commits;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.commitDB.readLocalities(this.fromID, this.skip, this.n)];
+                    case 0:
+                        console.log("Running analysis and retrieving CommitPaths");
+                        return [4 /*yield*/, this.commitType.getLocalities()];
                     case 1:
                         commits = _a.sent();
-                        commitPaths = this.mapper.map(commits);
-                        return [2 /*return*/, commitPaths];
+                        return [2 /*return*/, this.mapper.map(commits)];
                 }
             });
         });
     };
     __decorate([
-        (0, inversify_1.inject)(TYPES_1.BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHMAPPER_TYPES.db),
+        (0, inversify_1.inject)(TYPES_1.BUGFINDER_LOCALITYRECORDER_COMMITPATH_TYPES.commitRecorder),
         __metadata("design:type", Object)
-    ], CommitSubsetToCommitPath.prototype, "commitDB", void 0);
+    ], CommitPathRecorder.prototype, "commitType", void 0);
     __decorate([
-        (0, inversify_1.inject)(TYPES_1.BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHMAPPER_TYPES.fromID),
-        __metadata("design:type", String)
-    ], CommitSubsetToCommitPath.prototype, "fromID", void 0);
-    __decorate([
-        (0, inversify_1.optional)(),
-        (0, inversify_1.inject)(TYPES_1.BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHMAPPER_TYPES.skip),
-        __metadata("design:type", Number)
-    ], CommitSubsetToCommitPath.prototype, "skip", void 0);
-    __decorate([
-        (0, inversify_1.inject)(TYPES_1.BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHMAPPER_TYPES.n),
-        __metadata("design:type", Number)
-    ], CommitSubsetToCommitPath.prototype, "n", void 0);
-    __decorate([
-        (0, inversify_1.inject)(TYPES_1.BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHMAPPER_TYPES.commitToCommitPathMapper),
+        (0, inversify_1.inject)(TYPES_1.BUGFINDER_LOCALITYRECORDER_COMMITPATH_TYPES.commitToCommitPathMapper),
         __metadata("design:type", Object)
-    ], CommitSubsetToCommitPath.prototype, "mapper", void 0);
-    CommitSubsetToCommitPath = __decorate([
+    ], CommitPathRecorder.prototype, "mapper", void 0);
+    CommitPathRecorder = __decorate([
         (0, inversify_1.injectable)()
-    ], CommitSubsetToCommitPath);
-    return CommitSubsetToCommitPath;
+    ], CommitPathRecorder);
+    return CommitPathRecorder;
 }());
-exports.CommitSubsetToCommitPath = CommitSubsetToCommitPath;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29tbWl0U3Vic2V0VG9Db21taXRQYXRoTWFwcGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL0NvbW1pdFN1YnNldFRvQ29tbWl0UGF0aE1hcHBlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSx1Q0FBdUQ7QUFPdkQsaUNBQXVHO0FBR3ZHO0lBQUE7UUFlSTs7V0FFRztRQUVILFNBQUksR0FBVyxDQUFDLENBQUM7SUFpQnJCLENBQUM7SUFOUyw2Q0FBVSxHQUFoQjs7Ozs7NEJBQzhCLHFCQUFNLElBQUksQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLElBQUksRUFBRSxJQUFJLENBQUMsQ0FBQyxDQUFDLEVBQUE7O3dCQUF0RixPQUFPLEdBQWEsU0FBa0U7d0JBQ3RGLFdBQVcsR0FBaUIsSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLENBQUE7d0JBQzFELHNCQUFPLFdBQVcsRUFBQzs7OztLQUN0QjtJQTVCRDtRQURDLElBQUEsa0JBQU0sRUFBQyxzRkFBOEUsQ0FBQyxFQUFFLENBQUM7OzhEQUMzRDtJQU8vQjtRQURDLElBQUEsa0JBQU0sRUFBQyxzRkFBOEUsQ0FBQyxNQUFNLENBQUM7OzREQUMvRTtJQU1mO1FBREMsSUFBQSxvQkFBUSxHQUFFO1FBQUUsSUFBQSxrQkFBTSxFQUFDLHNGQUE4RSxDQUFDLElBQUksQ0FBQzs7MERBQ3ZGO0lBTWpCO1FBREMsSUFBQSxrQkFBTSxFQUFDLHNGQUE4RSxDQUFDLENBQUMsQ0FBQzs7dURBQy9FO0lBR1Y7UUFEQyxJQUFBLGtCQUFNLEVBQUMsc0ZBQThFLENBQUMsd0JBQXdCLENBQUM7OzREQUMvRTtJQTVCeEIsd0JBQXdCO1FBRHBDLElBQUEsc0JBQVUsR0FBRTtPQUNBLHdCQUF3QixDQW9DcEM7SUFBRCwrQkFBQztDQUFBLEFBcENELElBb0NDO0FBcENZLDREQUF3QiJ9
+exports.CommitPathRecorder = CommitPathRecorder;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tbWl0UGF0aFJlY29yZGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vYnVnRmluZGVyLWxvY2FsaXR5UmVjb3JkZXItY29tbWl0UGF0aC9zcmMvY29tbWl0UGF0aFJlY29yZGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLHVDQUE2QztBQUk3QyxpQ0FBb0U7QUFJcEU7SUFBQTtJQWFBLENBQUM7SUFOUywwQ0FBYSxHQUFuQjs7Ozs7O3dCQUNJLE9BQU8sQ0FBQyxHQUFHLENBQUMsNkNBQTZDLENBQUMsQ0FBQzt3QkFDakMscUJBQU0sSUFBSSxDQUFDLFVBQVUsQ0FBQyxhQUFhLEVBQUUsRUFBQTs7d0JBQXpELE9BQU8sR0FBYSxTQUFxQzt3QkFDL0Qsc0JBQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLEVBQUM7Ozs7S0FDbkM7SUFURDtRQURDLElBQUEsa0JBQU0sRUFBQyxtREFBMkMsQ0FBQyxjQUFjLENBQUM7OzBEQUM5QjtJQUdyQztRQURDLElBQUEsa0JBQU0sRUFBQyxtREFBMkMsQ0FBQyx3QkFBd0IsQ0FBQzs7c0RBQzVDO0lBTHhCLGtCQUFrQjtRQUQ5QixJQUFBLHNCQUFVLEdBQUU7T0FDQSxrQkFBa0IsQ0FhOUI7SUFBRCx5QkFBQztDQUFBLEFBYkQsSUFhQztBQWJZLGdEQUFrQiJ9

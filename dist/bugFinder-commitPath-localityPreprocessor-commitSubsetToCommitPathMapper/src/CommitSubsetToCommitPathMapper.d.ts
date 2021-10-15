@@ -1,7 +1,9 @@
 import { DB, LocalityPreprocessor } from "bugfinder-framework";
 import { CommitPath, CommitToCommitPathMapper } from "bugfinder-localityrecorder-commitpath";
 import { Commit } from "bugfinder-localityrecorder-commit";
+import { PathsHandling } from "../../bugFinder-localityRecorder-commitPath/src";
 export declare class CommitSubsetToCommitPath implements LocalityPreprocessor<CommitPath> {
+    pathsHandling: PathsHandling;
     /**
      * DB interface to use to read 0-localities from
      */
@@ -21,4 +23,5 @@ export declare class CommitSubsetToCommitPath implements LocalityPreprocessor<Co
     n: number;
     mapper: CommitToCommitPathMapper;
     preprocess(): Promise<CommitPath[]>;
+    applyPathHandling(localities: CommitPath[]): CommitPath[];
 }

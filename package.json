@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@types/node": "^15.12.2",
-    "bugfinder-framework": "^3.0.0",
+    "bugfinder-framework": "^8.0.0",
     "bugfinder-localityrecorder-commit": "^1.0.1",
     "bugfinder-localityrecorder-commitpath": "^1.0.4"
   }

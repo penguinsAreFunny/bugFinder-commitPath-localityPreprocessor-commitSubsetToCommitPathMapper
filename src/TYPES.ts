@@ -3,5 +3,6 @@ export const BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOMMITPATHM
     fromID:                     Symbol("FromID"),
     skip:                       Symbol("Skip"),
     n:                          Symbol("n"),
-    commitToCommitPathMapper:   Symbol("CommitToCommitPathMapper")
+    commitToCommitPathMapper:   Symbol("CommitToCommitPathMapper"),
+    pathsHandling:              Symbol("PathsHandling")
 }

@@ -4,4 +4,5 @@ export declare const BUGFINDER_COMMITPATH_LOCALITYPREPROCESSOR_COMMITSUBSETTOCOM
     skip: symbol;
     n: symbol;
     commitToCommitPathMapper: symbol;
+    pathsHandling: symbol;
 };
